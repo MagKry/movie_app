@@ -1,0 +1,35 @@
+<html>
+<title> Movies</title>
+<head>Movies</head><br><br>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <h> Sort by:</h>
+
+   <button type="submit" name="ascending" value="ascending">Rating ascending</button>
+   <a href="{% url 'movies' %}"> <button type="submit" name="descending" value="descending">Rating descending</button> </a>
+   <a href="{% url 'movies' %}"> <button type="submit" name="default" value="default">Default</button> </a>
+</form>
+
+<body>
+{% for movie in movies %}
+<ol> <a href="{% url 'movie_details' id=movie.id %}"> Title: {{movie.title}} </a>
+    <a href="{% url 'edit_movie' id=movie.id %}"> <button type="submit" name="edit"> Edit </button> </a>,
+    year: {{movie.year}},
+    director: {{movie.director}},
+    rating: {{movie.rating}} <a href="{% url 'delete_movie' id=movie.id %}"> <button type="submit" name="delete"> Delete </button> </a>
+</ol>
+{% endfor %}
+
+
+
+<p>
+    <a href="{% url 'movies' %}"> <button type="submit" name="movie">All movies</button> </a>
+    <a href="{% url 'add_movie' %}"> <button type="submit" name="add_movie">Add movie </button> </a>
+    <a href="{% url 'search_movie' %}"> <button type="submit" name="search_movie">Search for movie</button> </a> <br>
+    <a href="{% url 'persons' %}"> <button type="submit" name="persons">All persons</button> </a>
+
+</p>
+</body>
+
+</html>

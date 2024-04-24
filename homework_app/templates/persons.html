@@ -1,0 +1,20 @@
+<html>
+<head> Persons </head><br>
+<body>
+<br>
+{% for person in persons %}
+<li> {{person.id}} Name: {{person.first_name}} {{person.last_name}}<a href="{% url 'edit_person' id=person.id %}">
+    <button type="submit" name="Edit">Edit</button></a> <a href="{% url 'delete_person' id=person.id %}">
+    <button type="submit" name="Delete">Delete</button></a>
+{% endfor %}
+</li>
+
+<a href="{% url "add_person" %}"> <button type="submit" name="add_person"> Add person </button> </a>
+
+<p>
+    <a href="{% url 'movies' %}"> <button type="submit" name="movie">All movies</button> </a>
+    <a href="{% url 'add_movie' %}"> <button type="submit" name="add_movie">Add movie </button> </a>
+    <a href="{% url 'search_movie' %}"> <button type="submit" name="search_movie">Search for movie</button> </a> <br>
+</p>
+</body>
+</html>

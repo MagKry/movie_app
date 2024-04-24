@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<title>Edit person</title>
+<body>
+    <p> ID {{person.id}}: First name: {{person.first_name}} Last name: {{person.last_name}} </p>
+<form action="" method="POST">
+    {% csrf_token %}
+    <label for="first_name"> New first name</label>
+    <input type="text" name="first_name">
+    <label for="last_name"> New last name</label>
+    <input type="text" name="last_name">
+    <input type="submit" name="save" value="Save">
+</form>
+
+<p>
+    <a href="{% url 'movies' %}"> <button type="submit" name="movie">All movies</button> </a>
+    <a href="{% url 'add_movie' %}"> <button type="submit" name="add_movie">Add movie </button> </a>
+    <a href="{% url 'search_movie' %}"> <button type="submit" name="search_movie">Search for movie</button> </a> <br>
+    <a href="{% url 'persons' %}"> <button type="submit" name="persons">All persons</button> </a>
+</p>
+
+</body>
+</html>

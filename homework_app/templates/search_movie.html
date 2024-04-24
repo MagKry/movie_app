@@ -1,0 +1,38 @@
+<html>
+<title>Search movie</title>
+<body>
+<head> Search for movie</head>
+<form action="" method="POST">
+    <br>
+    {% csrf_token %}
+
+    <label for="title"> Title: </label>
+    <input type="text" name="title" value=""> <br>
+     <label for="first_name"> First name: </label>
+    <input type="text" name="first_name" value=""> <br>
+    <label for="last_name"> Last name: </label>
+    <input type="text" name="last_name" value=""> <br>
+     <label for="year_from">From year:</label>
+     <input type="number" name="year_from" min="1900"><br>
+     <label for="year_to">To year:</label>
+     <input type="number" name="year_to" max=""><br>
+    <label for="rating_from">Rating from:</label>
+    <input type="number" step=0.1 name="rating_from" min=1.0 value=""><br>
+    <label for="rating_to">Rating to:</label>
+    <input type="number" step=0.1 name="rating_to" max=10.0 value=""><br>
+    <label for="genre">Genre:</label>
+    <input type="checkbox" name="genre" value="thriller">Thriller
+    <input type="checkbox" name="genre" value="fantasy">Fantasy
+    <input type="checkbox" name="genre" value="documentary">Documentary
+    <input type="checkbox" name="genre" value="historic">Historic<br>
+    <input type="submit" value="Search">
+</form>
+
+<p>
+    <a href="{% url 'movies' %}"> <button type="submit" name="movie">All movies</button> </a>
+    <a href="{% url 'add_movie' %}"> <button type="submit" name="add_movie">Add movie </button> </a>
+    <a href="{% url 'persons' %}"> <button type="submit" name="persons">All persons</button> </a>
+</p>
+
+</body>
+</html>

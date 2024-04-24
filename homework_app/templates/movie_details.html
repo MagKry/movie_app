@@ -1,0 +1,19 @@
+<html>
+<body>
+Title: {{movie.title}}<br>
+year: {{movie.year}}<br>
+director: {{movie.director}}<br>
+starring: {% for starring in movie.starring.all %} {{starring.first_name}} {{starring.last_name}}, {% endfor %}<br>
+screenplay: {{movie.screenplay.first_name}} {{movie.screenplay.last_name}},<br>
+rating: {{movie.rating}}, <br>
+genre: {% for genre in movie.genre.all %} {{genre.name}}, {% endfor %}<br>
+
+<p>
+    <a href="{% url 'movies' %}"> <button type="submit" name="movie">All movies</button> </a>
+    <a href="{% url 'add_movie' %}"> <button type="submit" name="add_movie">Add movie </button> </a>
+    <a href="{% url 'search_movie' %}"> <button type="submit" name="search_movie">Search for movie</button> </a> <br>
+    <a href="{% url 'persons' %}"> <button type="submit" name="persons">All persons</button> </a>
+</p>
+
+</body>
+</html>
