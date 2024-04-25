@@ -20,7 +20,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@=&tf@g#t_xi$9!m5mj@p&x54&3q3nj@ct8bsi)6+$uxnb6v=b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -78,15 +77,7 @@ TEMPLATES = [
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'HOST': '127.0.0.1',
-        'NAME': 'exercises_db',
-        'ENGINE': 'django.db.backends.postgresql',
-        'USER': 'postgres',
-        'PASSWORD': 'coderslab',
-    }
-}
+
 
 # alternative database config
 
@@ -137,3 +128,18 @@ USE_TZ = False
 STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+try:
+    from coderslab.local_settings import DATABASES
+except ModuleNotFoundError:
+    print("Database configuration in local_settings.py is missing!")
+    print("Fill the data and try again!")
+    exit(0)
+
+
+try:
+    from coderslab.local_settings import SECRET_KEY
+except ModuleNotFoundError:
+    print("Secretkey in local_settings.py is missing!")
+    print("Fill the data and try again!")
+    exit(0)
